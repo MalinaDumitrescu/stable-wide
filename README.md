@@ -7,7 +7,7 @@ The project tests TabPFN-Wide attention against classical baselines while keepin
 ## Open in PyCharm
 
 1. Open this folder as a project.
-2. Create a Python 3.11 environment.
+2. Create a venv ----> python -m venv .venv   .
 3. Install `requirements.txt`.
 4. For TabPFN-Wide attention runs, install the optional package and use a CUDA GPU if possible.
 5. Open the notebooks in order.
@@ -26,13 +26,13 @@ pip install -r requirements-omics.txt
 
 ## Notebook order
 
-- `00_setup.ipynb` — environment and project check
-- `01_synthetic_baselines.ipynb` — fast baseline sanity check
-- `02_attention_smoke.ipynb` — first real TabPFN-Wide attention run
-- `03_full_synthetic_study.ipynb` — main controlled experiment
-- `04_prepare_real_data.ipynb` — validate CSV data or create patient-level pseudobulk
-- `05_brca_real_study.ipynb` — real breast-cancer experiment
-- `06_final_analysis.ipynb` — final tables, plots and go/no-go decision
+- `00_setup.ipynb` -> environment and project check
+- `01_synthetic_baselines.ipynb` -> fast baseline sanity check
+- `02_attention_smoke.ipynb` -> first real TabPFN-Wide attention run
+- `03_full_synthetic_study.ipynb` -> main controlled experiment
+- `04_prepare_real_data.ipynb` -> validate CSV data or create patient-level pseudobulk
+- `05_brca_real_study.ipynb` -> real breast-cancer experiment
+- `06_final_analysis.ipynb` -> final tables, plots and go/no-go decision
 
 ## Core research rules
 
@@ -45,4 +45,4 @@ pip install -r requirements-omics.txt
 - the query experiment is only a readout-composition control, not a transductive-prediction claim;
 - a null pilot is a valid stopping result.
 
-The exact experiment engine is in `src/stablewide/experiment.py`. The notebooks are deliberately thin so the research logic stays readable.
+The exact experiment engine is in `src/stablewide/experiment.py`. 
