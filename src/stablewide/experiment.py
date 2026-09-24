@@ -1532,7 +1532,10 @@ def run_one_outer(args, outer_id, raw_tuple, root_out):
         "class_counts": class_counts.tolist(), "preprocessing": prep_meta,
         "selected_feature_indices": sel.tolist(),
     }
-    (split_out / "meta.json").write_text(json.dumps(split_meta, indent=2, default=str))
+    (split_out / "meta.json").write_text(
+        json.dumps(split_meta, indent=2, default=str),
+        encoding="utf-8",
+    )
     pd.DataFrame(rows).to_csv(split_out / "results.csv", index=False)
     pair.to_csv(split_out / "pairwise_matched_budget.csv", index=False)
     common.to_csv(split_out / "common_matched_budget_diagnostic.csv", index=False)
@@ -1667,7 +1670,10 @@ def main():
     tuned_agg.to_csv(out / "aggregate_tuned_performance.csv", index=False)
 
     decision_text, verdict = preregistered_decision(agg, pair_agg, args)
-    (out / "preregistered_decision.txt").write_text(decision_text)
+    (out / "preregistered_decision.txt").write_text(
+        decision_text,
+        encoding="utf-8",
+    )
     plot_aggregate(agg, out)
 
     meta = {
@@ -1692,7 +1698,10 @@ def main():
             "query": "Fixed-anchor prediction invariance uses np.allclose(atol=query_atol, rtol=query_rtol); attention variation is interpreted only as readout-composition variation.",
         },
     }
-    (out / "meta.json").write_text(json.dumps(meta, indent=2, default=str))
+    (out / "meta.json").write_text(
+        json.dumps(meta, indent=2, default=str),
+        encoding="utf-8",
+    )
 
     print("\n" + decision_text)
     log(f"wrote v4 outputs to {out}; verdict={verdict}")
